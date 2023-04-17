@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Home from '../pages/Home'
-import ForgotPassword from "../pages/ForgotPassword"
-import Offers from "../pages/Offers"
-import Profile from "../pages/Profile"
-import SignIn from "../pages/SignIn"
-import SignUp from "../pages/SignUp"
+import Home from './pages/Home'
+import ForgotPassword from "./pages/ForgotPassword"
+import Offers from "./pages/Offers"
+import Profile from "./pages/Profile"
+import SignIn from "./pages/SignIn"
+import SignUp from "./pages/SignUp"
+import NavBar from "./components/NavBar"
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <Router>
+        <NavBar/>
         <Routes>
         <Route path="/" exact element={<Home/>}/>
         <Route path="/forgot-password" exact element={<ForgotPassword/>}/>
