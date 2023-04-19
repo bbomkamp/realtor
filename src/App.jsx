@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar"
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from "./components/PrivateRoute"
+import CreateListing from "./pages/CreateListing"
 
 
 function App() {
@@ -21,10 +22,11 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/forgot-password" exact element={<ForgotPassword />} />
           <Route path="/offers" exact element={<Offers />} />
+          <Route path="/create-listing" exact element={<CreateListing/>} />
           <Route path="/sign-in" exact element={<SignIn />} />
           <Route path="/sign-up" exact element={<SignUp />} />
-          <Route path="/profile" element={<PrivateRoute/>}>
-          <Route path="/profile" exact element={<Profile />} />
+          <Route path="/profile" element={<PrivateRoute />}>
+            <Route path="/profile" exact element={<Profile />} />
           </Route>
         </Routes>
       </Router>
