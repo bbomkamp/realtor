@@ -22,11 +22,15 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/forgot-password" exact element={<ForgotPassword />} />
           <Route path="/offers" exact element={<Offers />} />
-          <Route path="/create-listing" exact element={<CreateListing/>} />
           <Route path="/sign-in" exact element={<SignIn />} />
           <Route path="/sign-up" exact element={<SignUp />} />
+
+          
           <Route path="/profile" element={<PrivateRoute />}>
             <Route path="/profile" exact element={<Profile />} />
+          </Route>
+          <Route path="/create-listing" element={<PrivateRoute />}>
+            <Route path="/create-listing" exact element={<CreateListing/>} />
           </Route>
         </Routes>
       </Router>
