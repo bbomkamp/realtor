@@ -86,7 +86,7 @@ export default function CreateListing() {
     e.preventDefault();
     setLoading(true);
 
-
+    // Debugging
     // if (!Array.isArray(images)) {
     //   setLoading(false);
     //   toast.error("Images should be an array");
@@ -171,14 +171,14 @@ export default function CreateListing() {
 
 
     }
-
-    const imgUrls = await Promise.all(
+const imgUrls = await Promise.all(
       [...images].map((image) => storeImage(image))
     ).catch((e) => {
       setLoading(false);
       toast.error("Images not uploaded");
       return;
     });
+    
 
     const formDataCopy = {
       ...formData,
