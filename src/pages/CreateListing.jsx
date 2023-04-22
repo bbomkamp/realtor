@@ -12,9 +12,18 @@ import { v4 as uuidv4 } from "uuid";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
+
+
+
+
 export default function CreateListing() {
+
+
+  // Initialize navigate and auth variables
   const navigate = useNavigate();
   const auth = getAuth();
+
+  // Initialize state variables using hooks
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -33,6 +42,8 @@ export default function CreateListing() {
     longitude: 0,
     images: {},
   });
+
+// Destructure variables from formData state
   const {
     type,
     name,
@@ -49,6 +60,9 @@ export default function CreateListing() {
     longitude,
     images,
   } = formData;
+
+
+// Define onChange function to handle changes in form data
   function onChange(e) {
     let boolean = null;
     if (e.target.value === "true") {
@@ -72,9 +86,15 @@ export default function CreateListing() {
       }));
     }
   }
+
+
+  // Define onSubmit function to handle submission of form data
   async function onSubmit(e) {
-    e.preventDefault();
+
+    e.preventDefault(); // prevent default form submission behavior
     setLoading(true);
+
+    // Validation checks
     if (+discountedPrice >= +regularPrice) {
       setLoading(false);
       toast.error("Discounted price needs to be less than regular price");
@@ -85,31 +105,51 @@ export default function CreateListing() {
       toast.error("maximum 6 images are allowed");
       return;
     }
+
+
     let geolocation = {};
     let location;
+
+    // Geolocation check
     if (geolocationEnabled) {
       const response = await fetch(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${import.meta.env.VITE_REACT_APP_GEOCODE_API_KEY}`
       );
+
+      // Parse the response JSON data
       const data = await response.json();
       console.log(data);
+
+      // Extract the latitude and longitude from the response and store them in the `geolocation` object
       geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
       geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
+
+      // If the API returned "ZERO_RESULTS", set the `location` variable to undefined
       location = data.status === "ZERO_RESULTS" && undefined;
+
+       // If `location` is undefined, show an error message and exit the function
       if (location === undefined) {
         setLoading(false);
         toast.error("please enter a correct address");
         return;
       }
     } else {
+      // If geolocation is not enabled, use the provided `latitude` and `longitude`
       geolocation.lat = latitude;
       geolocation.lng = longitude;
     }
+
+    // Upload the images to Firebase Storage and get their URLs
     async function storeImage(image) {
+
       return new Promise((resolve, reject) => {
+        
         const storage = getStorage();
+        // Generate a unique filename for the image
         const filename = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
+        // Create a reference to the Firebase Storage location where the image will be uploaded
         const storageRef = ref(storage, filename);
+        // Upload the image to Firebase Storage
         const uploadTask = uploadBytesResumable(storageRef, image);
         uploadTask.on(
           "state_changed",
@@ -142,13 +182,18 @@ export default function CreateListing() {
         );
       });
     }
+
+    // Upload all the images and get their URLs
     const imgUrls = await Promise.all(
       [...images].map((image) => storeImage(image))
     ).catch((error) => {
+      // If there was an error uploading the images, show an error message and exit the function
       setLoading(false);
       toast.error("Images not uploaded");
       return;
     });
+
+    // Create a new object that includes the form data, the image URLs, and other metadata
     const formDataCopy = {
       ...formData,
       imgUrls,
@@ -156,7 +201,10 @@ export default function CreateListing() {
       timestamp: serverTimestamp(),
       userRef: auth.currentUser.uid,
     };
+
+    // Delete the `images` property, since it is not needed anymore
     delete formDataCopy.images;
+    // If the `offer` property is false, delete the `discountedPrice` property
     !formDataCopy.offer && delete formDataCopy.discountedPrice;
     delete formDataCopy.latitude;
     delete formDataCopy.longitude;
@@ -165,9 +213,11 @@ export default function CreateListing() {
     toast.success("Listing created");
     navigate(`/category/${formDataCopy.type}/${docRef.id}`);
   }
+
   if (loading) {
     return <Spinner />;
   }
+
   return (
     <main className="max-w-md px-2 mx-auto">
       <h1 className="text-3xl text-center mt-6 font-bold">Create a Listing</h1>
@@ -180,8 +230,8 @@ export default function CreateListing() {
             value="sale"
             onClick={onChange}
             className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${type === "rent"
-                ? "bg-white text-black"
-                : "bg-slate-600 text-white"
+              ? "bg-white text-black"
+              : "bg-slate-600 text-white"
               }`}
           >
             sell
@@ -192,8 +242,8 @@ export default function CreateListing() {
             value="rent"
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${type === "sale"
-                ? "bg-white text-black"
-                : "bg-slate-600 text-white"
+              ? "bg-white text-black"
+              : "bg-slate-600 text-white"
               }`}
           >
             rent

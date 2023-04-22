@@ -52,6 +52,10 @@ export default function Profile() {
     }
   }
 
+
+  
+
+
   return (
     <>
       <section className='max-w-6xl mx-auto flex justify-center items-center flex-col'>
