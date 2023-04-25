@@ -118,7 +118,7 @@ export default function CreateListing() {
 
       // Parse the response JSON data
       const data = await response.json();
-      console.log(data);
+      console.log("Fetched data"+data);
 
       // Extract the latitude and longitude from the response and store them in the `geolocation` object
       geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
