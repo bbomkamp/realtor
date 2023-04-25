@@ -12,6 +12,7 @@ import PrivateRoute from "./components/PrivateRoute"
 import CreateListing from "./pages/CreateListing"
 import EditListing from "./pages/EditListing";
 import Listing from "./pages/Listing"
+import Category from "./pages/Category"
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/forgot-password" exact element={<ForgotPassword />} />
           <Route path="/offers" exact element={<Offers />} />
+          <Route path="/category/:categoryName" exact element={<Category />} />
           <Route path="/sign-in" exact element={<SignIn />} />
           <Route path="/sign-up" exact element={<SignUp />} />
           <Route path="/category/:categoryName/:listingId" exact element={<Listing />} />

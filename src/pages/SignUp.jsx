@@ -1,3 +1,4 @@
+// This imports necessary modules from various packages and components
 import React, { useState } from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -8,46 +9,66 @@ import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+// This exports the SignUp component as the default export
 export default function SignUp() {
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  })
+// This defines the initial state for the formData object using useState hook
+const [formData, setFormData] = useState({
+name: "",
+email: "",
+password: "",
+})
 
-  const [showPassword, setShowPassword] = useState(false)
+// This defines the initial state for the showPassword boolean using useState hook
+const [showPassword, setShowPassword] = useState(false)
 
-  const { name, email, password } = formData;
+// This destructures the values from the formData object
+const { name, email, password } = formData;
 
-  const navigate = useNavigate();
+// This defines a navigate variable using the useNavigate hook from react-router-dom package
+const navigate = useNavigate();
 
-  function onChange(e) {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }))
-  }
+// This function updates the state of the formData object whenever an input field changes
+function onChange(e) {
+setFormData((prevState) => ({
+...prevState,
+[e.target.id]: e.target.value,
+}))
+}
 
-  async function onSubmit(e) {
-    e.preventDefault()
+// This function handles the submit event when the form is submitted
+async function onSubmit(e) {
+e.preventDefault()
 
     try {
+      // This gets the authentication instance from Firebase
       const auth = getAuth()
+    
+      // This creates a new user with the provided email and password
       const userCredentail = await createUserWithEmailAndPassword(auth, email, password);
-
+    
+      // This updates the user's display name
       updateProfile(auth.currentUser, {
         displayName: name
       });
-
+    
+      // This gets the newly created user from the user credential object
       const user = userCredentail.user;
+    
+      // This creates a copy of the formData object and removes the password field for security reasons
       const formDataCopy = {...formData};
       delete formDataCopy.password;
+    
+      // This adds a timestamp field to the formDataCopy object
       formDataCopy.timestamp = serverTimestamp();
+    
+      // This sets the user's data in the "users" collection of the Firestore database
       await setDoc(doc(db, "users", user.uid), formDataCopy)
-      // toast.success("Sign up was successful")
+    
+      // This navigates to the home page after successful registration
       navigate("/");
     } catch (error) {
+      // This displays an error toast message if there is an error during registration
       toast.error("Something went wrong with registration.")
     }
 

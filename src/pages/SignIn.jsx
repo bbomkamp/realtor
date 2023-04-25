@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import OAuth from '../components/OAuth';
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 export default function SignIn() {
 
+  // State variables to store form data and password visibility
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,10 +15,13 @@ export default function SignIn() {
 
   const [showPassword, setShowPassword] = useState(false)
 
+  // Extracting email and password from form data object
   const { email, password } = formData;
 
+  // useNavigate hook from react-router-dom for navigation
   const navigate = useNavigate()
 
+  // function to update the form data when input changes
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
@@ -25,17 +29,21 @@ export default function SignIn() {
     }))
   }
 
+  // function to handle form submission
   async function onSubmit(e){
     e.preventDefault()
     try {
       
       const auth = getAuth()
+      // Firebase method to sign in a user with email and password
       const userCredentail = await signInWithEmailAndPassword(auth, email, password);
+      // If sign-in is successful, navigate to home page
       if(userCredentail.user){
         navigate("/")
       }
 
     } catch (error) {
+      // If sign-in is unsuccessful, show error message
       toast.error("Bad user credentials");
     }
   }

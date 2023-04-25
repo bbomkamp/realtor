@@ -1,3 +1,4 @@
+// Import necessary Firebase and React libraries
 import { getAuth, updateProfile } from 'firebase/auth';
 import { collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, updateDoc, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
@@ -7,29 +8,34 @@ import { db } from '../firebase';
 import { FcHome } from "react-icons/fc"
 import ListingItem from '../components/ListingItem';
 
+// Define the Profile component
 export default function Profile() {
 
-
+  // Get the authentication object and the navigate hook from the React Router library
   const auth = getAuth();
   const navigate = useNavigate();
 
+  // Set up state for the form data, user listings, and loading state
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
     email: auth.currentUser.email,
   });
-
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Destructure the form data object to access the name and email fields
   const { name, email } = formData;
 
+  // Set up state to determine whether to show the change detail form
   const [changeDetail, setChangeDetail] = useState(false);
 
+  // Function to log out the user
   function onLogout() {
     auth.signOut();
     navigate("/")
   }
 
+  // Function to update the form data whenever a field is changed
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
@@ -37,8 +43,10 @@ export default function Profile() {
     }))
   }
 
+  // Function to handle the form submission
   async function onSubmit() {
     try {
+      // Check if the display name has been changed
       if (auth.currentUser.displayName !== name) {
         // Update displayName in Firebase auth
         await updateProfile(auth.currentUser, {
@@ -50,17 +58,21 @@ export default function Profile() {
           name,
         });
       }
+      // Show a success message if the profile was updated successfully
       toast.success("Profile successfully updated");
     } catch (error) {
+      // Show an error message if the profile could not be updated
       toast.error("Could not update profile details")
     }
   }
 
+  // Use an effect to fetch the user's listings when the component mounts
   useEffect(() => {
     async function fetchUserListings() {
-
+      // Create a query to fetch the user's listings
       const listingRef = collection(db, "listings");
       const q = query(listingRef, where("userRef", "==", auth.currentUser.uid), orderBy("timestamp", "desc"));
+      // Fetch the listings and convert the query snapshot into an array of objects
       const querySnap = await getDocs(q);
       let listings = [];
       querySnap.forEach((doc) => {
@@ -69,12 +81,13 @@ export default function Profile() {
           data: doc.data(),
         });
       });
+      // Set the listings state and hide the loading spinner
       setListings(listings);
       setLoading(false);
     }
 
     fetchUserListings();
-  }, [auth.currentUser.uid]);
+  }, [auth.currentUser.uid]);// Only re-run the effect when the current user ID changes
 
   async function onDelete(listingID){
     if(window.confirm("Are you sure you want to delete this listing?")){
