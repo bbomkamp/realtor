@@ -11,7 +11,9 @@ The app is built using the following technologies:
 * Redux
 * Bootstrap
 <br />
+
 #Getting Started
+
 To run the app on your machine, follow these steps:
 1. Clone the repository to your local machine:
 
