@@ -6,9 +6,9 @@ his is a web application built for real estate agents to manage their property l
 
 #Technologies Used
 The app is built using the following technologies:
-*Node.js
-*Express
--MongoDB
--React
-*Redux
-*Bootstrap
+* Node.js
+* Express
+* MongoDB
+* React
+* Redux
+* Bootstrap
