@@ -13,6 +13,7 @@ The app is built using the following technologies:
 <br />
 # Getting Started
 To run the app on your machine, follow these steps:
+
 ```
 git clone https://github.com/bbomkamp/realtor-web-app.git
 ```
