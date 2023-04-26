@@ -11,9 +11,10 @@ This is a web application built for real estate agents to manage their property 
 ## Technologies Used
 The app is built using the following technologies:
 * Node.js
-* Express
-* MongoDB
+* Vite
 * React
+* TailwindCSS
+* Firebase
 <br />
 
 ## Getting Started
