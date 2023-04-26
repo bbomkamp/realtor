@@ -1,7 +1,8 @@
 # Realtor Web App
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 
-his is a web application built for real estate agents to manage their property listings and client information. The app allows agents to add, edit, and delete property listings, as well as view and manage client information.
+This is a web application built for real estate agents to manage their property listings and client information. The app allows agents to add, edit, and delete property listings, as well as view and manage client information.
 <br />
 ## Technologies Used
 The app is built using the following technologies:
@@ -57,9 +58,6 @@ export const db = getFirestore();
 ## Development
 ```
 npm run dev
-```
-
-## Build
 ```
 
 
