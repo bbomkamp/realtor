@@ -7,7 +7,7 @@
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 
 This is a web application built for real estate agents to manage their property listings and client information. The app allows agents to add, edit, and delete property listings, as well as view and manage client information.
-<br />
+
 ## Technologies Used
 The app is built using the following technologies:
 * Node.js
@@ -15,7 +15,6 @@ The app is built using the following technologies:
 * React
 * TailwindCSS
 * Firebase
-<br />
 
 ## Getting Started
 
