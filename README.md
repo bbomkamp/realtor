@@ -46,7 +46,7 @@ import { getFirestore } from "firebase/firestore"
 const firebaseConfig = {
   apiKey: "<Your Firebase apiKey>",
   authDomain: "<Your Firebase authDomain>",
-  projectId: "<Your FirebaseprojectId >",
+  projectId: "<Your FirebaseprojectId>",
   storageBucket: "<Your Firebase storageBucket>",
   messagingSenderId: "<Your Firebase messagingSenderId>",
   appId: "<Your Firebase appId>"
