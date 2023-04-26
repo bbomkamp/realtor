@@ -1,8 +1,8 @@
-## Realtor Web App
+# Realtor Web App
 
 his is a web application built for real estate agents to manage their property listings and client information. The app allows agents to add, edit, and delete property listings, as well as view and manage client information.
 <br />
-# Technologies Used
+## Technologies Used
 The app is built using the following technologies:
 * Node.js
 * Express
@@ -12,7 +12,7 @@ The app is built using the following technologies:
 * Bootstrap
 <br />
 
-#Getting Started
+## Getting Started
 
 To run the app on your machine, follow these steps:
 1. Clone the repository to your local machine:
