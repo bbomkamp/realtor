@@ -1,6 +1,4 @@
-# <p style="text-align: center;">Realtor Web App</p>
-
-![1682617195329](https://user-images.githubusercontent.com/37642026/234946755-c6ab5aed-33f0-4c17-b31a-e0163417dca1.png)
+# Realtor Web App
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
@@ -8,6 +6,8 @@
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+
+![1682617195329](https://user-images.githubusercontent.com/37642026/234946755-c6ab5aed-33f0-4c17-b31a-e0163417dca1.png)
 
 
 This is a web application built for real estate agents to manage their property listings and client information. The app allows agents to add, edit, and delete property listings, as well as view and manage client information.
