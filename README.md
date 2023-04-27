@@ -8,7 +8,7 @@
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 <p align="center">
-    <img width="200" src="[http://material-bread.org/logo-shadow.svg](https://user-images.githubusercontent.com/37642026/234946755-c6ab5aed-33f0-4c17-b31a-e0163417dca1.png)" alt="Material Bread logo">
+    <img width="200" src="http://material-bread.org/logo-shadow.svg](https://user-images.githubusercontent.com/37642026/234946755-c6ab5aed-33f0-4c17-b31a-e0163417dca1.png)" alt="Material Bread logo">
 </p>
 
 ![1682617195329](https://user-images.githubusercontent.com/37642026/234946755-c6ab5aed-33f0-4c17-b31a-e0163417dca1.png)
