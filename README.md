@@ -4,7 +4,7 @@
 <tbody>
 <td align="center">
 <img width="2000" height="0"><br>
-<sub>This is text in the box. Much wow</sub><br>
+<sub># Realtor Web App</sub><br>
 <img width="2000" height="0">
 </td>
 </tbody>
