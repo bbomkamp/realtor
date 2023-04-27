@@ -1,17 +1,4 @@
-# Realtor Web App
-<div align="center">
-<table>
-<tbody>
-<td align="center">
-<img width="2000" height="0"><br>
-<sub># Realtor Web App</sub><br>
-<img width="2000" height="0">
-</td>
-</tbody>
-</table>
-</div>
-
-<h1 align="center">Material Bread</h1>
+<h1 align="center">Realtor Web App</h1>
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
