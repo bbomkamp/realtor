@@ -1,5 +1,15 @@
 # Realtor Web App
-<h3 style="text-align: center;">H3 that is center aligned</h3>
+<div align="center">
+<table>
+<tbody>
+<td align="center">
+<img width="2000" height="0"><br>
+<sub>This is text in the box. Much wow</sub><br>
+<img width="2000" height="0">
+</td>
+</tbody>
+</table>
+</div>
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
